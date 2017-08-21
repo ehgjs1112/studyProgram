@@ -21,6 +21,7 @@
    
    if($prevYbtn != 0) {
     $year = $PrevYear - 1;
+	$month = $prevMonth +1;
     echo "전년";
     $prevYbtn = 0;
    } 
@@ -39,14 +40,15 @@
    }
    if($nextYbtn != 0){
     $year = $nextYear + 1; 
-    echo "다음년";
+    $month = $nextMonth - 1;
+	echo "다음년";
     $nextYbtn = 0;
    }
    
    $PrevYear   = ( $month == 1 )? ( $year - 1 ) : $year; 
-   $nextYear    = ( $month == 12 )? ( $year + 1 ) : $year; 
-   $prevMonth = ( $month == 1 )? 12 : ( $month - 1 ); 
-   $nextMonth = ( $month == 12 )? 1 : ( $month + 1 );
+   $nextYear   = ( $month == 12)? ( $year + 1 ) : $year; 
+   $prevMonth  = ( $month == 1 )? 12 : ( $month - 1 ); 
+   $nextMonth  = ( $month == 12)? 1 : ( $month + 1 );
    
    echo "$PrevYear-$nextYear-$prevMonth-$nextMonth"."<br/>";
    echo "$year $month"."<br/>";
