@@ -1,0 +1,86 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/jquery-ui-1.9.0.custom.js"></script>
+<script type="text/javascript" src="../js/jquery-ui-1.9.0.custom.min.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.2.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+ var rowTag = $("#addTbl tbody").html();
+ $("#addTbl").data("rowTag", rowTag); 
+ //키값 rowTag로 테이블의 기본 row 값의 Html태그 저장
+ 
+});
+function fnAddRow(){
+ var rowlen = $("#addTbl tr").length-1;
+ $("#addTbl tbody").append($("#addTbl").data("rowTag"));
+ 
+ fnSetRowNo();
+}
+function fnDelRow(obj){
+ if($("#addTbl tr").length < 3){
+  alert("더이상 삭제할 수 없습니다.");
+  return false;
+ }else{
+  $(obj).parent().parent().remove();
+  
+  fnSetRowNo();
+ }
+}
+function fnSetRowNo(){
+    var span = $("#addTbl tbody tr td span");  
+    var span_cnt = span.length; // tbody안의 tr안에 td안에 span 태그들의 갯수
+    if(span_cnt == 1){ // span이 한개일경우 순번 붙이기
+        $("span.#id_row_num").text("1")
+    }else{ // span이 여러개일경우 순번 붙이기
+        $.each(span,function(i){
+            $(this).text(i+1);
+        });
+    } 
+    
+}
+ 
+ function rowCheDel() {
+  var $obj = $("input[name='chk']");
+  var checkCount = $obj.size();
+  for ( var i = 0; i < checkCount; i++) {
+   if ($obj.eq(i).is(":checked")) {
+    $obj.eq(i).parent().parent().remove();
+   }
+  }
+ }
+</script>
+</head>
+<body>
+<table id="addTbl">
+ <thead>
+  <tr>
+   <th>No.</th>
+   <th>내용1</th>
+   <th>내용2</th>
+   <th>
+    <input type="button" value="행추가" onclick="fnAddRow()"/>
+   </th>
+  </tr>
+ </thead>
+ <tbody >
+  <tr class="tbl_tr"> 
+  <td>
+   <span class="id_row_num" id="id_row_num">1</span>
+  </td>
+  <td>
+   <input type="text" id="addtr_" name="arr_1"/>
+   <input type="button" value="팝업" onclick="fnPopUp(this)"/>
+  </td>
+  <td>
+   <input type="button" value="행삭제" onclick="fnDelRow(this)"/>
+  </td>
+  </tr>
+ </tbody>
+</table>
+</body>
+</html> 

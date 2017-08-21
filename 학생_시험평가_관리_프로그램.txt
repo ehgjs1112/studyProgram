@@ -1,0 +1,13 @@
+create table student_score_table(
+
+id int(11) not null auto_increment,
+student_number         int(30),
+student_name            int(50),
+student_language       int(50),
+student_english          int(50),
+student_science          int(50),
+student_society           int(50),
+student_class              varchar(50),
+PRIMARY KEY (id)
+
+)

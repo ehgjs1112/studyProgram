@@ -1,0 +1,51 @@
+<html lang = "ko">
+	<head><meta http-equiv = "Content-Type" content = "text/html; charset = UTF-8"></head>
+	<TITLE></TITLE>
+	<SCRIPT LANGUAGE = "javascript">
+		var count = 1;
+		var addcount;
+		
+		function addinputbox(){
+			for(var i = 1; i <= count; i++){
+				if(!document.getElementByName("test"+i)[0]){
+					
+				}
+			}
+		}
+	</SCRIPT>
+	<body -nload = "addinputbox()">
+		<input type = "button" value = "추가" onclick = "javascript:addinputbox();">
+		<input type = "button" value = "삭제" onclick = "javascript:subtracinputbox();">
+		<input type = "button" value = "전송" onclick = "javascript:submitbutton();">
+		<form name = "post_number" action = "http://localhost/table_post.php" method = "post">
+			<input type = "hidden" name = "count">
+				<table border = "1" width = "539">
+					<tbody>
+						<tr>
+							<td width = "20"></td>
+							<td width = "100">학번</td>
+							<td width = "100">이름</td>
+							<td width = "53">언어</td>
+							<td width = "53">영어</td>
+							<td width = "53">과학</td>
+							<td width = "53">사회</td>
+							<td width = "53">학급</td>
+						</tr>
+					</tbody>
+				</table>
+				<table border = "1">
+					<tr id = "in_data">
+						<td width = "20"><input type = checkbox name = checklist value = "+addCount+"></td>
+						<td width = "100"><input type = "text" size = "11" maxlength = "10"></td>
+						<td width = "100"><input type = "text" size = "11" maxlength = "10"></td>
+						<td width = "20"><input type = "text" size = "3" maxlength = "3"></td>
+						<td width = "20"><input type = "text" size = "3" maxlength = "3"></td>
+						<td width = "50"><input type = "text" size = "3" maxlength = "3"></td>
+						<td width = "50"><input type = "text" size = "3" maxlength = "3"></td>
+						<td width = "50"><input type = "text" size = "3" maxlength = "3"></td>
+					</tr>
+				</table>
+			</input>
+		</form>
+	</body>
+</html>

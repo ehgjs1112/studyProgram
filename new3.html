@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0026)http://localhost/test.html -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+<title> </title>
+<script language="javascript">
+ var count = 1;
+ var addCount;
+ 
+//행추가
+function addInputBox() {
+	for(var i=1; i<=count; i++) {
+	//1이상이면 for문 행 카운터
+	if(!document.getElementsByName('checkList'+i)[0]) { //여기서 문제
+		addCount = i;
+		
+		break;
+		//유무확인
+	}
+	else addCount = count;
+	document.getElementById('number').innerHTML = count;
+	document.getElementById('add').innerHTML = addCount;
+	document.getElementById('i_data').innerHTML = i;
+ }
+ 
+ var addStr = document.getElementById("input_data").innerHTML;
+ var table = document.getElementById("dynamic_table");
+ var newRow = table.insertRow();
+ 
+ newRow.innerHTML = addStr;
+ count++;
+ }
+
+</script></head>
+	<body -nload="addInputBox()">
+		<form name="gForm" action="http://localhost/alert.jsp" method="get">
+			<input type="hidden" name="count">
+			<table id="dynamic_table" border="1" size = "530">
+				<tbody>
+					<tr>
+						<td width="20" ></th>
+						<td width ="53">순번</th>
+						<td width ="53">i_data</th>
+						<td width ="53">addcount</th>
+						<td width="100">학번</td>
+						<td width="100">이름</td>
+						<td width="53">언어</td>
+						<td width="53">영어</td>
+						<td width="53">과학</td>
+						<td width="53">사회</td>
+						<td width="53">학급</td>
+					</tr>
+					
+					<tr id="input_data">
+						<td><input type="checkbox" id = "" name='checkList "+addcount+"' value="+addCount+"></td>
+						<td id="number"></td>
+						<td id="i_data"> </td>
+						<td id="add"> </td>
+						<td><input type="text" name="student_number" size="10" maxlength="10"></td>
+						<td><input type="text" name="student_name" size="10" maxlength="10"></td>
+						<td><input type="text" name="student_lang" size="3" maxlength="3"></td>
+						<td><input type="text" name="student_eng" size="3" maxlength="3"></td>
+						<td><input type="text" name="student_sci" size="3" maxlength="3"></td>
+						<td><input type="text" name="student_soci" size="3" maxlength="3"></td>
+						<td>
+							<select name="" "class_name"="" size="1">
+								<option value="A">A반</option>
+								<option value="B">B반</option>
+								<option value="C">C반</option>
+								<option value="D">D반</option>
+								<option value="E">E반</option>
+								<option value="F">F반</option>
+								<option value="G">G반</option>
+							</select>
+						</td>
+					</tr>
+					</tbody>
+				</table>			
+		</form>
+		<input type="button" value="추가" onclick="javascript:addInputBox();"> 
+		<input type="button" value="삭제" onclick="javascript:subtractInputBox();">
+		<input type="button" value="전송" onclick="javascript:submitbutton();">
+	</body>
+</html>
